@@ -3,12 +3,24 @@
 #define INDICATORSDELAY 300 
 #define BRAKELIGHT 4
 
+#define MOTORLEFTUP 5
+#define MOTORLEFTDOWN 6
+#define MOTORLEFTSPEED 9
+
+#define MOTORRIGHTUP 8
+#define MOTORRIGHTDOWN 7
+#define MOTORRIGHTSPEED 10
+
 char indicators = 'n';
 
 void setup() {
   pinMode(LEFTINDICATOR, OUTPUT);
   pinMode(RIGHTINDICATOR, OUTPUT);
   pinMode(BRAKELIGHT, OUTPUT);
+  pinMode(MOTORLEFTUP, OUTPUT);
+  pinMode(MOTORLEFTDOWN, OUTPUT);
+  pinMode(MOTORRIGHTUP, OUTPUT);
+  pinMode(MOTORRIGHTDOWN, OUTPUT);
   Serial.begin(9600);
 }
 
