@@ -1,12 +1,14 @@
 #define LEFTINDICATOR 2
 #define RIGHTINDICATOR 3
 #define INDICATORSDELAY 300 
+#define BRAKELIGHT 4
 
 char indicators = 'n';
 
 void setup() {
   pinMode(LEFTINDICATOR, OUTPUT);
   pinMode(RIGHTINDICATOR, OUTPUT);
+  pinMode(BRAKELIGHT, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -27,6 +29,12 @@ void loop() {
       case 'n':
         indicators = 'n';
         break;
+      case 'B':
+        digitalWrite(BRAKELIGHT, HIGH);
+        break;
+      case 'b':
+        digitalWrite(BRAKELIGHT, LOW);
+        break;        
     }
   }
   delay(INDICATORSDELAY);
