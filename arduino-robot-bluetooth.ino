@@ -46,7 +46,37 @@ void loop() {
         break;
       case 'b':
         digitalWrite(BRAKELIGHT, LOW);
-        break;        
+        break;
+      case 'L':
+        if(Serial.available())
+        {
+          data = Serial.read();
+          analogWrite(MOTORLEFTSPEED, data);
+        }
+        break;
+      case 'R':
+        if(Serial.available())
+        {
+          data = Serial.read();
+          analogWrite(MOTORRIGHTSPEED, data);
+        }
+        break;
+      case 'Z':
+        digitalWrite(MOTORLEFTDOWN, LOW);
+        digitalWrite(MOTORLEFTUP, HIGH);
+        break;
+      case 'z':
+        digitalWrite(MOTORLEFTUP, LOW);
+        digitalWrite(MOTORLEFTDOWN, HIGH);
+        break;
+      case 'X':
+        digitalWrite(MOTORRIGHTDOWN, LOW);
+        digitalWrite(MOTORRIGHTUP, HIGH);
+        break;
+      case 'x':
+        digitalWrite(MOTORRIGHTUP, LOW);
+        digitalWrite(MOTORRIGHTDOWN, HIGH);
+        break;
     }
   }
   delay(INDICATORSDELAY);
