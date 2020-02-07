@@ -1,3 +1,5 @@
+#include <NewPing.h>
+
 #define LEFTINDICATOR 2
 #define RIGHTINDICATOR 3
 #define INDICATORSDELAY 300 
@@ -12,6 +14,7 @@
 #define MOTORRIGHTSPEED 10
 
 char indicators = 'n';
+NewPing sonar(12, 11);
 
 void setup() {
   pinMode(LEFTINDICATOR, OUTPUT);
@@ -25,6 +28,7 @@ void setup() {
 }
 
 void loop() {
+  Serial.println(String(sonar.ping_cm())+" cm");
   if(Serial.available()){
     char data = Serial.read();
     switch(data)
