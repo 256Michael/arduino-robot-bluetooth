@@ -27,8 +27,9 @@ void setup() {
   Serial.begin(9600);
 }
 
-void loop() {
-  Serial.println(String(sonar.ping_cm())+" cm");
+void loop() { 
+  Serial.write('d');
+  Serial.write(sonar.ping_cm());
   if(Serial.available()){
     char data = Serial.read();
     switch(data)
