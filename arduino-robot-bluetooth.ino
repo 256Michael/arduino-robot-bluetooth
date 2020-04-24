@@ -25,6 +25,11 @@ void setup() {
   pinMode(MOTORRIGHTUP, OUTPUT);
   pinMode(MOTORRIGHTDOWN, OUTPUT);
   Serial.begin(9600);
+  Serial.write("AT\r\n");
+  // you can change 5454 to your password
+  Serial.write("AT+PSWD=4545\r\n");
+  // you can change arduino_robot to your name
+  Serial.write("AT+NAME=arduino_robot\r\n");
 }
 
 void loop() { 
