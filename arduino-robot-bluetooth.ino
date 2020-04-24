@@ -39,6 +39,9 @@ void loop() {
     char data = Serial.read();
     switch(data)
     {
+      case 'i':
+        Serial.write('i');
+        Serial.write(indicators);
       case 'l':
         indicators = 'l';
         break;
