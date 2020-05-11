@@ -13,7 +13,12 @@
 #define MOTORRIGHTDOWN 7
 #define MOTORRIGHTSPEED 10
 
-char indicators = 'n';
+enum class Indicators: char{
+  none,
+  left,
+  right,
+  emergency
+} indicators;
 NewPing sonar(12, 11);
 
 void setup() {
@@ -41,18 +46,18 @@ void loop() {
     {
       case 'i':
         Serial.write('i');
-        Serial.write(indicators);
+        Serial.write((char)indicators);
       case 'l':
-        indicators = 'l';
+        indicators = Indicators::left;
         break;
       case 'r':
-        indicators = 'r';
+        indicators = Indicators::right;
         break;
       case 'e':
-        indicators = 'e';
+        indicators = Indicators::emergency;
         break;
       case 'n':
-        indicators = 'n';
+        indicators = Indicators::none;
         break;
       case 'B':
         digitalWrite(BRAKELIGHT, HIGH);
@@ -94,17 +99,17 @@ void loop() {
   }
   delay(INDICATORSDELAY);
   switch(indicators){
-    case 'l':
+    case Indicators::left:
       digitalWrite(LEFTINDICATOR, HIGH);
       delay(INDICATORSDELAY);
       digitalWrite(LEFTINDICATOR, LOW);
       break;
-    case 'r':
+    case Indicators::none:
       digitalWrite(RIGHTINDICATOR, HIGH);
       delay(INDICATORSDELAY);
       digitalWrite(RIGHTINDICATOR, LOW);
       break;
-    case 'e':
+    case Indicators::emergency:
       digitalWrite(LEFTINDICATOR, HIGH);
       digitalWrite(RIGHTINDICATOR, HIGH);
       delay(INDICATORSDELAY);
